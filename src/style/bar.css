@@ -1,0 +1,37 @@
+.bar {
+    width: 500px;
+    height: 200px;
+    display: grid;
+    align-content: center;
+    grid-template-columns: 500px 2px;
+    grid-auto-flow: row;
+}
+
+.bar-line {
+    width: 500px;
+}
+
+.line-black {
+    background-color: black;
+    height: 2px;
+    grid-column: 1/2;
+}
+
+.line-white {
+    background-color: transparent;
+    height: 20px;
+    grid-column: 1/2;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.vertical-line {
+    grid-column: 2/3;
+    grid-row: 5/14;
+    width: 2px;
+    height: 88px;
+    background-color: black;
+    align-self: center;
+}
