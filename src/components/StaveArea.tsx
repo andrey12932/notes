@@ -4,7 +4,6 @@ import Buttons from './Buttons';
 import '../style/s.scss';
 import store from '../store/Settings';
 import { observer } from 'mobx-react-lite';
-import Settings from '../store/Settings';
 import SidePanel from './SidePanel';
 
 const StaveArea = observer(() => {
@@ -14,8 +13,22 @@ const StaveArea = observer(() => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [repeat, setRepeat] = useState(false);
     const [instrument, setInstrument] = useState(0);
+    const [mobile, setMobile] = useState(false)
+
+    function resizeHandler() {
+        if (window.innerWidth <= 500) {
+            store.setMobile(true);
+            setMobile(true);
+        }
+        else {
+            store.setMobile(false);
+            setMobile(false);
+        }
+    }
 
     useEffect(() => {
+        resizeHandler();
+        window.addEventListener('resize', resizeHandler);
         if (store.currentVertical === store.melody.length){
             store.setCurrentVertical(0);
             setTimeout(stop, 10);
@@ -68,7 +81,7 @@ const StaveArea = observer(() => {
 
     function handleInstr(i: number) {
         setInstrument(i);
-        Settings.generator.setList(i);
+        store.generator.setList(i);
         store.melody.forEach(el => {
             el?.forEach(elem => {
                 elem.updateSound(i);
@@ -78,11 +91,11 @@ const StaveArea = observer(() => {
 
     return (
         <div className='stave-area'>
-            <div className='aside'>
+            {!mobile && <div className='aside'>
                 <SidePanel instrument={instrument} handleInstr={handleInstr}/>
-            </div>
+            </div>}
             <Stave stave={store.stave} generator={store.generator} iteration={store.currentVertical} tempo={tempo}/>
-            <Buttons repeat={repeat} tempo={tempo} changeTempo={changeTempo} play={play} stop={stop} isPlaying={isPlaying} repeatHandler={() => setRepeat(!repeat)} />
+            <Buttons mobile={mobile} instrument={instrument} handleInstr={handleInstr} repeat={repeat} tempo={tempo} changeTempo={changeTempo} play={play} stop={stop} isPlaying={isPlaying} repeatHandler={() => setRepeat(!repeat)} />
         </div>
     );
 })

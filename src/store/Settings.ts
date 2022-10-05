@@ -8,6 +8,7 @@ class store {
     melody: Array<Array<Note> | undefined> = Array(16).fill(undefined);
     stave: Stave = new Stave(2);
     currentVertical: number = 0;
+    mobile: boolean = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -27,6 +28,10 @@ class store {
 
     setCurrentVertical = (num: number) => {
         this.currentVertical = num;
+    }
+
+    setMobile = (isMobile: boolean) => {
+        this.mobile = isMobile;
     }
 }
 

@@ -41,7 +41,7 @@ const SidePanel: React.FC<SidePanelProps> = ({handleInstr, instrument}) => {
                 <div className="instrument-choise">
                     <div onClick={() => handleChangeInstrument(0)} className="instrument-choise-item">Гитара акустическая</div>
                     <div onClick={() => handleChangeInstrument(1)} className="instrument-choise-item">Пианино</div>
-                    <div onClick={() => handleChangeInstrument(0)} className="instrument-choise-item">Дисторшн гитара</div>
+                    <div onClick={() => handleChangeInstrument(2)} className="instrument-choise-item">Дисторшн гитара</div>
                 </div> : ''
             }
             <div className="side-button" onClick={generateMelody}>

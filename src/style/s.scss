@@ -8,6 +8,47 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
+.main {
+    &-screen {
+        position: absolute;
+        display: grid;
+        row-gap: 20px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 50;
+        background-color: $maincolor;
+        padding: 20px;
+        border-radius: 50px;
+        color: white;
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        opacity: 1;
+        transition: 0.3s;
+        box-sizing: border-box;
+
+        & .quote {
+            background-color: #779FFA;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        & a {
+            color: white;
+            justify-self: end;
+            margin-right: 20px;
+            font-size: 17px;
+            text-decoration: none;
+            transition: 0.2s;
+
+            &:hover {
+                color: #779FFA;
+            }
+        }
+    }
+}
+
 .pointer {
     background-color: $secondColor;
     height: 95px;
@@ -29,10 +70,13 @@ body {
     justify-content: center;
     justify-self: center;
     position: relative;
-    //grid-column: 2/3;
     
     @media screen and (max-width: 1280px) {
         grid-template-columns: auto;
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 70%;
     }
 }
 
@@ -47,6 +91,10 @@ body {
     &-sign {
         min-width: 70px;
     }
+
+    @media screen and (max-width: 574px) {
+        display: none;
+    }
 }
 
 .aside {
@@ -60,7 +108,6 @@ body {
     align-content: center;
     z-index: 100;
     row-gap: 40px;
-    //background: linear-gradient(-90deg,  $maincolor 70%, transparent);
 }
 
 .note {
@@ -82,8 +129,6 @@ header {
     position: fixed;
     width: 100%;
     color: $maincolor;
-    //background-color: $maincolor;
-    //background: linear-gradient(180deg,  $maincolor 70%, transparent);
     z-index: 30;
     font-weight: 500;
 }
@@ -233,6 +278,14 @@ header {
         height: 7px;
         display: grid;
         align-items: center;
+
+        @media screen and (max-width: 463px) {
+            min-width: 30px;
+        }
+        
+        @media screen and (max-width: 380px) {
+            min-width: 25px;
+        }
     }
 
     &-notes {
@@ -362,6 +415,81 @@ header {
             &:hover {
                 background-color: #474c55;
             }
+        }
+    }
+}
+
+.main {
+    &-screen {
+        @media screen and (max-width: 770px) {
+            max-width: 500px;
+        }
+        
+        @media screen and (max-width: 660px) {
+            max-width: 70vw;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .buttons {
+        grid-auto-flow: column;
+        left: 50vw;
+        transform: translate(-50%, 0);
+        bottom: 25px;
+        top: unset;
+        justify-content: space-around;
+        right: unset;
+        height: auto;
+        width: 90vw;
+        z-index: 5000;
+    }
+
+    .settings {
+        top: -37vh;
+        right: unset;
+        z-index: 5000;
+    }
+
+    .aside {
+        background-color: transparent;
+    }
+
+    .side-button {
+        height: 50px;
+        width: 50px;
+        border: 2px solid $maincolor;
+        border-radius: 50%;
+        background-color: white;
+        transition: 0.3s;
+        -webkit-box-shadow: 0px 0px 0px 0px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 0px 0px 0px 0px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 0px 0px 0px rgba(34, 60, 80, 0.2);
+
+        & svg > path {
+            fill: $maincolor;
+        }
+        
+        &:hover {
+            -webkit-box-shadow: 0px 0px 22px 6px $maincolor;
+            -moz-box-shadow: 0px 0px 22px 6px $maincolor;
+            box-shadow: 0px 0px 10px 3px $maincolor;
+        }
+    }
+
+    header {
+        background-color: $maincolor;
+        color: white;
+    }
+
+    .instrument-choise {
+        bottom: 9vh;
+    }
+
+    
+    .main {
+        &-screen {
+            max-width: 90%;
         }
     }
 }
